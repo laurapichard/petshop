@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pet Shop Amigo Fiel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <h1>🐾 Amigo Fiel</h1>
+    {% if session.funcionario_id %}
+    <nav>
+      <a href="{{ url_for('painel') }}">Painel</a>
+      <a href="{{ url_for('clientes') }}">Clientes</a>
+      <a href="{{ url_for('pets') }}">Pets</a>
+      <a href="{{ url_for('servicos') }}">Serviços</a>
+      <a href="{{ url_for('atendimentos') }}">Atendimentos</a>
+      <a href="{{ url_for('relatorios') }}">Relatórios</a>
+      <a href="{{ url_for('logout') }}" class="sair">Sair ({{ session.nome }})</a>
+    </nav>
+    {% endif %}
+  </header>
+
+  <main>
+    {% with mensagens = get_flashed_messages(with_categories=true) %}
+      {% for categoria, texto in mensagens %}
+        <div class="aviso {{ categoria }}">{{ texto }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    {% block conteudo %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Novo atendimento</h2>
+
+<form method="post" class="cartao formulario">
+  <label>Pet
+    <select name="codigo_pet" required>
+      {% for p in pets %}
+        <option value="{{ p.codigo_pet }}">{{ p.nome }} (dono: {{ p.dono }})</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <label>Funcionário responsável
+    <select name="codigo_funcionario" required>
+      {% for f in funcionarios %}
+        <option value="{{ f.codigo_funcionario }}">{{ f.nome }} - {{ f.cargo }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <div class="linha">
+    <label>Data <input type="date" name="data_atendimento" required></label>
+    <label>Horário <input type="time" name="horario" required></label>
+  </div>
+
+  <fieldset>
+    <legend>Serviços prestados</legend>
+    {% for s in servicos %}
+      <label class="check">
+        <input type="checkbox" name="servicos" value="{{ s.codigo_servico }}">
+        {{ s.nome }} — {{ s.preco|reais }}
+      </label>
+    {% endfor %}
+  </fieldset>
+
+  <p class="dica">O preço de cada serviço é gravado no momento do atendimento e o total é calculado automaticamente.</p>
+  <button type="submit">Registrar atendimento</button>
+</form>
+{% endblock %}

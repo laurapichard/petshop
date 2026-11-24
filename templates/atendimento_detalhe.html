@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Atendimento #{{ at.numero_atendimento }}</h2>
+
+<dl class="cartao detalhes">
+  <dt>Data</dt><dd>{{ at.data_atendimento.strftime('%d/%m/%Y') }} às {{ at.horario.strftime('%H:%M') }}</dd>
+  <dt>Cliente</dt><dd>{{ at.cliente }}</dd>
+  <dt>Pet</dt><dd>{{ at.pet }}</dd>
+  <dt>Funcionário</dt><dd>{{ at.funcionario }}</dd>
+</dl>
+
+<h3>Serviços</h3>
+<table>
+  <thead><tr><th>Serviço</th><th>Preço praticado</th></tr></thead>
+  <tbody>
+  {% for i in itens %}
+    <tr><td>{{ i.nome }}</td><td>{{ i.preco_praticado|reais }}</td></tr>
+  {% endfor %}
+  </tbody>
+  <tfoot><tr><th>Total</th><th>{{ at.valor_total|reais }}</th></tr></tfoot>
+</table>
+
+<p><a href="{{ url_for('atendimentos') }}">← Voltar para atendimentos</a></p>
+{% endblock %}

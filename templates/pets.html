@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Pets</h2>
+
+<details class="cartao" open>
+  <summary>Novo pet</summary>
+  <form method="post" class="linha">
+    <input type="text" name="nome" placeholder="Nome do pet" required>
+    <input type="text" name="especie" placeholder="Espécie (Cachorro, Gato...)" required>
+    <input type="text" name="raca" placeholder="Raça">
+    <input type="date" name="data_nascimento">
+    <select name="codigo_cliente" required>
+      <option value="">Dono...</option>
+      {% for d in donos %}
+        <option value="{{ d.codigo_cliente }}">{{ d.nome }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Salvar</button>
+  </form>
+</details>
+
+<table>
+  <thead><tr><th>Código</th><th>Nome</th><th>Espécie</th><th>Raça</th><th>Nascimento</th><th>Dono</th><th></th></tr></thead>
+  <tbody>
+  {% for p in pets %}
+    <tr>
+      <td>{{ p.codigo_pet }}</td>
+      <td>{{ p.nome }}</td>
+      <td>{{ p.especie }}</td>
+      <td>{{ p.raca or '-' }}</td>
+      <td>{{ p.data_nascimento.strftime('%d/%m/%Y') if p.data_nascimento else '-' }}</td>
+      <td>{{ p.dono }}</td>
+      <td>
+        <form method="post" action="{{ url_for('excluir_pet', codigo=p.codigo_pet) }}"
+              onsubmit="return confirm('Excluir este pet?');">
+          <button class="perigo" type="submit">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="7">Nenhum pet cadastrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

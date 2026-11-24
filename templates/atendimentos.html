@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="cabecalho">
+  <h2>Atendimentos</h2>
+  <a class="botao" href="{{ url_for('novo_atendimento') }}">+ Novo atendimento</a>
+</div>
+
+<table>
+  <thead><tr><th>Nº</th><th>Data</th><th>Horário</th><th>Pet</th><th>Funcionário</th><th>Total</th></tr></thead>
+  <tbody>
+  {% for a in atendimentos %}
+    <tr>
+      <td><a href="{{ url_for('detalhe_atendimento', numero=a.numero_atendimento) }}">#{{ a.numero_atendimento }}</a></td>
+      <td>{{ a.data_atendimento.strftime('%d/%m/%Y') }}</td>
+      <td>{{ a.horario.strftime('%H:%M') }}</td>
+      <td>{{ a.pet }}</td>
+      <td>{{ a.funcionario }}</td>
+      <td>{{ a.valor_total|reais }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6">Nenhum atendimento registrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

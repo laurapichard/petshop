@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Catálogo de serviços</h2>
+
+<details class="cartao" open>
+  <summary>Novo serviço</summary>
+  <form method="post" class="linha">
+    <input type="text" name="nome" placeholder="Nome do serviço" required>
+    <input type="text" name="descricao" placeholder="Descrição">
+    <input type="number" name="preco" step="0.01" min="0" placeholder="Preço" required>
+    <input type="number" name="duracao_minutos" min="1" placeholder="Duração (min)" required>
+    <button type="submit">Salvar</button>
+  </form>
+</details>
+
+<table>
+  <thead><tr><th>Código</th><th>Nome</th><th>Descrição</th><th>Preço</th><th>Duração</th><th></th></tr></thead>
+  <tbody>
+  {% for s in servicos %}
+    <tr>
+      <td>{{ s.codigo_servico }}</td>
+      <td>{{ s.nome }}</td>
+      <td>{{ s.descricao or '-' }}</td>
+      <td>{{ s.preco|reais }}</td>
+      <td>{{ s.duracao_minutos }} min</td>
+      <td>
+        <form method="post" action="{{ url_for('excluir_servico', codigo=s.codigo_servico) }}"
+              onsubmit="return confirm('Excluir este serviço?');">
+          <button class="perigo" type="submit">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6">Nenhum serviço cadastrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

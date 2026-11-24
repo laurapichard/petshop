@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Olá, {{ session.nome }} <small>({{ session.cargo }})</small></h2>
+
+<div class="indicadores">
+  <div class="card-num"><span>{{ totais.clientes }}</span>clientes</div>
+  <div class="card-num"><span>{{ totais.pets }}</span>pets</div>
+  <div class="card-num"><span>{{ totais.atendimentos }}</span>atendimentos</div>
+  <div class="card-num"><span>{{ totais.faturamento|reais }}</span>faturamento</div>
+</div>
+
+<h3>Atendimentos recentes</h3>
+{% if recentes %}
+<table>
+  <thead><tr><th>Nº</th><th>Data</th><th>Horário</th><th>Pet</th><th>Funcionário</th><th>Valor</th></tr></thead>
+  <tbody>
+  {% for a in recentes %}
+    <tr>
+      <td><a href="{{ url_for('detalhe_atendimento', numero=a.numero_atendimento) }}">#{{ a.numero_atendimento }}</a></td>
+      <td>{{ a.data_atendimento.strftime('%d/%m/%Y') }}</td>
+      <td>{{ a.horario.strftime('%H:%M') }}</td>
+      <td>{{ a.pet }}</td>
+      <td>{{ a.funcionario }}</td>
+      <td>{{ a.valor_total|reais }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum atendimento registrado ainda.</p>
+{% endif %}
+{% endblock %}
