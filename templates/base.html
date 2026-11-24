@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pet Shop Amigo Fiel</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3">
 </head>
 <body>
   <header class="topo">
-    <h1>🐾 Amigo Fiel</h1>
+    <h1><svg viewBox="0 0 64 64" width="38" height="38" aria-hidden="true"><path d="M11 6 L24 22 L9 27 Z" fill="#f9a8d4"/><path d="M53 6 L40 22 L55 27 Z" fill="#f9a8d4"/><ellipse cx="32" cy="38" rx="22" ry="18" fill="#fae8ff"/><circle cx="24" cy="36" r="3" fill="#3b0764"/><circle cx="40" cy="36" r="3" fill="#3b0764"/><path d="M29 42 L35 42 L32 45 Z" fill="#db2777"/><path d="M14 42 L3 39 M14 46 L3 47 M50 42 L61 39 M50 46 L61 47" stroke="#fae8ff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg><span>Amigo <em>Fiel</em></span></h1>
     {% if session.funcionario_id %}
     <nav>
       <a href="{{ url_for('painel') }}">Painel</a>

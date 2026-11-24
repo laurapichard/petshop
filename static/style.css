@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
 * { box-sizing: border-box; }
 body {
-  margin: 0; font-family: system-ui, sans-serif; background: #f4f6f8; color: #222;
+  margin: 0; font-family: 'Fredoka', system-ui, sans-serif; background: #fdf4ff; color: #222;
 }
 .topo {
-  background: #2e7d6b; color: #fff; padding: 12px 24px;
+  background: #7e22ce; color: #fff; padding: 12px 24px;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
 }
 .topo h1 { margin: 0; font-size: 1.4rem; }
@@ -18,20 +19,20 @@ table {
   width: 100%; border-collapse: collapse; background: #fff;
   border-radius: 8px; overflow: hidden; margin-bottom: 24px;
 }
-th, td { padding: 10px 12px; border-bottom: 1px solid #e6e9ec; text-align: left; }
-th { background: #eef3f1; font-weight: 600; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #f3e8ff; text-align: left; }
+th { background: #f5f3ff; font-weight: 600; }
 tfoot th { background: #fff; }
-a { color: #2e7d6b; }
+a { color: #7e22ce; }
 input, select {
-  padding: 8px 10px; border: 1px solid #c8d0d6; border-radius: 6px; font-size: .95rem;
+  padding: 8px 10px; border: 1px solid #e9d5ff; border-radius: 6px; font-size: .95rem;
 }
 button, .botao {
-  background: #2e7d6b; color: #fff; border: 0; border-radius: 6px; padding: 9px 16px;
+  background: #7e22ce; color: #fff; border: 0; border-radius: 6px; padding: 9px 16px;
   font-size: .95rem; cursor: pointer; text-decoration: none; display: inline-block;
 }
-button:hover, .botao:hover { background: #256657; }
-button.perigo { background: #b23b3b; padding: 5px 10px; font-size: .85rem; }
-button.perigo:hover { background: #8f2d2d; }
+button:hover, .botao:hover { background: #6b21a8; }
+button.perigo { background: #db2777; padding: 5px 10px; font-size: .85rem; }
+button.perigo:hover { background: #9d174d; }
 .cartao {
   background: #fff; border-radius: 8px; padding: 18px; margin-bottom: 24px;
   box-shadow: 0 1px 3px rgba(0,0,0,.06);
@@ -41,7 +42,7 @@ button.perigo:hover { background: #8f2d2d; }
 .linha { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
 .linha label, .formulario label { display: flex; flex-direction: column; gap: 4px; font-size: .9rem; }
 .formulario { display: flex; flex-direction: column; gap: 16px; }
-.formulario fieldset { border: 1px solid #dde3e8; border-radius: 6px; }
+.formulario fieldset { border: 1px solid #e9d5ff; border-radius: 6px; }
 .check { display: flex !important; flex-direction: row !important; align-items: center; gap: 8px; margin: 6px 0; }
 .login { max-width: 380px; margin: 40px auto; display: flex; flex-direction: column; gap: 12px; }
 .login form { display: flex; flex-direction: column; gap: 12px; }
@@ -57,9 +58,37 @@ button.perigo:hover { background: #8f2d2d; }
   background: #fff; border-radius: 8px; padding: 18px; color: #555;
   box-shadow: 0 1px 3px rgba(0,0,0,.06);
 }
-.card-num span { display: block; font-size: 1.7rem; font-weight: 700; color: #2e7d6b; }
+.card-num span { display: block; font-size: 1.7rem; font-weight: 700; color: #7e22ce; }
 .cabecalho { display: flex; justify-content: space-between; align-items: center; }
 .detalhes { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; }
 .detalhes dt { font-weight: 600; }
 .detalhes dd { margin: 0; }
 .dica { font-size: .85rem; color: #666; margin: 0; }
+.topo h1 { display: flex; align-items: center; gap: 10px; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+.topo h1 em { font-style: normal; color: #f9a8d4; }
+.topo nav a { font-weight: 500; }
+.topo nav a:hover { text-decoration: none; background: #6b21a8; border-radius: 8px; padding: 6px 10px; margin: -6px -10px; }
+.valor-total, .card-num span { color: #7e22ce; }
+.card-num span { font-weight: 700; }
+
+/* Fonte mais visível: maior e mais forte */
+body { font-size: 18px; font-weight: 500; line-height: 1.5; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.3px; }
+h2 { font-size: 26px; color: #3b0764; }
+h3 { font-size: 21px; color: #3b0764; }
+.topo h1 { font-size: 30px; }
+.topo nav a { font-size: 18px; font-weight: 600; }
+label { font-size: 16px; font-weight: 700; }
+input, select, textarea { font-size: 17px; font-weight: 500; }
+button, .botao, .btn { font-size: 17px; font-weight: 700; }
+button.perigo { font-size: 15px; }
+table { font-size: 17px; }
+th { font-size: 15px; font-weight: 700; color: #3b0764; text-transform: uppercase; letter-spacing: 0.4px; }
+td { font-weight: 500; }
+.card-num { font-size: 17px; font-weight: 600; }
+.card-num span { font-size: 36px; }
+.aviso { font-size: 17px; font-weight: 600; }
+.dica, .rodape, .suave { font-size: 15px; font-weight: 500; }
+
+/* Campos e botões também usam a fonte escolhida */
+input, select, textarea, button { font-family: 'Fredoka', system-ui, sans-serif; }
